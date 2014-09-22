@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BCEB26AA19CFE7E8005A24E2 /* NewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEB26A919CFE7E8005A24E2 /* NewsDetailViewController.m */; };
 		F9BE62B319CFD56A000CE464 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BE62B219CFD56A000CE464 /* Foundation.framework */; };
 		F9BE62B519CFD56A000CE464 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BE62B419CFD56A000CE464 /* CoreGraphics.framework */; };
 		F9BE62B719CFD56A000CE464 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BE62B619CFD56A000CE464 /* UIKit.framework */; };
@@ -164,6 +165,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BCEB26A819CFE7E8005A24E2 /* NewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDetailViewController.h; sourceTree = "<group>"; };
+		BCEB26A919CFE7E8005A24E2 /* NewsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDetailViewController.m; sourceTree = "<group>"; };
 		F9BE62AF19CFD56A000CE464 /* WellKnow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WellKnow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9BE62B219CFD56A000CE464 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F9BE62B419CFD56A000CE464 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -518,6 +521,8 @@
 				F9BE62F419CFD5A0000CE464 /* NewsSportViewController.m */,
 				F9BE62F519CFD5A0000CE464 /* photosViewController.h */,
 				F9BE62F619CFD5A0000CE464 /* photosViewController.m */,
+				BCEB26A819CFE7E8005A24E2 /* NewsDetailViewController.h */,
+				BCEB26A919CFE7E8005A24E2 /* NewsDetailViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1149,6 +1154,7 @@
 				F9BE645619CFD5A0000CE464 /* YMImageAndLabelTool.m in Sources */,
 				F9BE642B19CFD5A0000CE464 /* SDWebImagePrefetcher.m in Sources */,
 				F9BE641A19CFD5A0000CE464 /* NSString+Hashing.m in Sources */,
+				BCEB26AA19CFE7E8005A24E2 /* NewsDetailViewController.m in Sources */,
 				F9BE642419CFD5A0000CE464 /* NSData+ImageContentType.m in Sources */,
 				F9BE641519CFD5A0000CE464 /* UIImageView+AFNetworking.m in Sources */,
 				F9BE644419CFD5A0000CE464 /* CarCell.m in Sources */,
@@ -1368,6 +1374,7 @@
 				F9BE62E319CFD56A000CE464 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F9BE62E419CFD56A000CE464 /* Build configuration list for PBXNativeTarget "WellKnowTests" */ = {
 			isa = XCConfigurationList;
@@ -1376,6 +1383,7 @@
 				F9BE62E619CFD56A000CE464 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

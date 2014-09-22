@@ -17,6 +17,8 @@
 #import "UILabel+ETTools.h"
 #import "UIViewController+NavigationItemSettingTool.h"
 #import "DeviceManager.h"
+#import "NewsDetailViewController.h"
+
 @interface NewsSportViewController ()
 {
     UITableView *_tableView;
@@ -169,7 +171,8 @@
 #pragma mark Four delegate
 
 - (void)sendModel:(NewsNormalModel *)model{
-    NSLog(@"model title %@",model.title);
+    NewsDetailViewController *detail = [[NewsDetailViewController alloc] initWithModel:model];
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 - (void)didReceiveMemoryWarning
