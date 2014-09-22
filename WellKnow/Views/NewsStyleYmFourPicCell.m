@@ -27,21 +27,25 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        _customView1 = [[YMImageAndLabelTool alloc] initWithFrame:CGRectMake(20, 20, 130, 80)];
+        UILabel *titleLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(20, 5, 100, 21)];
+        titleLabel2.text = @"聚悉热点";
+        
+        _customView1 = [[YMImageAndLabelTool alloc] initWithFrame:CGRectMake(20, 30, 130, 80)];
         _customView1.tag = 100;
-        _customView2 = [[YMImageAndLabelTool alloc] initWithFrame:CGRectMake(170, 20, 130, 80)];
+        _customView2 = [[YMImageAndLabelTool alloc] initWithFrame:CGRectMake(170, 30, 130, 80)];
         _customView2.tag = 101;
         
-        _customView3 = [[YMImageAndLabelTool alloc] initWithFrame:CGRectMake(20, 120, 130, 80)];
+        _customView3 = [[YMImageAndLabelTool alloc] initWithFrame:CGRectMake(20, 130, 130, 80)];
         _customView3.tag = 102;
         _customView3.backgroundColor = [UIColor blackColor];
         
-        _customView4 = [[YMImageAndLabelTool alloc] initWithFrame:CGRectMake(170, 120, 130, 80)];
+        _customView4 = [[YMImageAndLabelTool alloc] initWithFrame:CGRectMake(170, 130, 130, 80)];
         _customView4.tag = 103;
         self.userInteractionEnabled = YES;
         
         UIView *view = self.contentView;
         
+        [view addSubview:titleLabel2];
         [view addSubview:_customView1];
         [view addSubview:_customView2];
         [view addSubview:_customView3];
@@ -51,7 +55,7 @@
         //        [self.contentView addSubview:_customView2];
         //        [self.contentView addSubview:_customView3];
         //        [self.contentView addSubview:_customView4];
-        //
+        
         
     }
     return self;
@@ -61,8 +65,8 @@
     _dataArray = [[NSMutableArray alloc] initWithArray:dataArray];
     for (int i = 0; i<4; i++) {
         NewsNormalModel *model = [_dataArray objectAtIndex:i];
-        YMImageAndLabelTool *customView = (YMImageAndLabelTool *)[self.contentView.subviews objectAtIndex:i];
-        [customView.titleLabel setText:model.title];
+        YMImageAndLabelTool *customView = (YMImageAndLabelTool *)[self.contentView.subviews objectAtIndex:i+1];
+        [customView.titleLabel1 setText:model.title];
         [customView.picImageView setImageWithURL:[NSURL URLWithString:model.pic] ];
         [self addgestureTOView: customView];
         customView.userInteractionEnabled = YES;

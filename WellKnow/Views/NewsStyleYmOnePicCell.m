@@ -39,21 +39,20 @@
     
     UIImageView *picImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 40, 280, 140)];
     [picImageView setImageWithURL:[NSURL URLWithString:model.pic]];
-    [self addSubview:picImageView];
+    [self.contentView addSubview:picImageView];
     
     UILabel *infoLabel =  [[UILabel alloc] init];
     [infoLabel setTextColor:[UIColor grayColor]];
     infoLabel.font = [UIFont systemFontOfSize:[DeviceManager systemTextSize]-3];
     infoLabel.frame = CGRectMake(20, 182, 280,  0);
-    
-    
     infoLabel.text = model.intro;
     infoLabel.numberOfLines = 0;
     [infoLabel fixToSystemSubTitleSizeWithMaxWidth:280];
     [self.contentView addSubview:infoLabel];
-    UIImageView  *_borderImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"border9"]];
-    [_borderImageView setFrame:CGRectMake(20, 40 , 280, 140)];
-    [self.contentView addSubview:_borderImageView];
+//    
+//    UIImageView  *_borderImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"border9"]];
+//    [_borderImageView setFrame:CGRectMake(20, 40 , 280, 140)];
+//    [self.contentView addSubview:_borderImageView];
 }
 
 

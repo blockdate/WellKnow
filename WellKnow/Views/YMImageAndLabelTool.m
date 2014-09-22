@@ -24,14 +24,14 @@
         [self addSubview:_picImageView];
         border.image = [UIImage imageNamed:@"border9"];
         
-        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 67, 135, 21)];
-        _titleLabel.backgroundColor = [UIColor blackColor];
-        [_titleLabel setAlpha:0.6];
+        _titleLabel1 = [[UILabel alloc] initWithFrame:CGRectMake(5, 67, 135, 21)];
+        _titleLabel1.backgroundColor = [UIColor blackColor];
+        [_titleLabel1 setAlpha:0.6];
         
-        _titleLabel.font = [UIFont systemFontOfSize:([DeviceManager systemTextSize]-2)];
-        [_titleLabel setTextColor:[UIColor whiteColor]];
-        _titleLabel.textAlignment = UITextAlignmentCenter;
-        [self addSubview:_titleLabel];
+        _titleLabel1.font = [UIFont systemFontOfSize:([DeviceManager systemTextSize]-2)];
+        [_titleLabel1 setTextColor:[UIColor whiteColor]];
+        _titleLabel1.textAlignment = UITextAlignmentCenter;
+        [self addSubview:_titleLabel1];
         [self addSubview:border];
 
     }
