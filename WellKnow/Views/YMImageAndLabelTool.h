@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface YMImageAndLabelTool : UIView
-@property (nonatomic,strong) UILabel *titleLabel;
+@property (nonatomic,strong) UILabel *titleLabel1;
 @property (nonatomic,strong) UIImageView *picImageView;
 
 @end

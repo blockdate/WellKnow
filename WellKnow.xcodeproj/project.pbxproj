@@ -526,6 +526,8 @@
 				F9BE62F419CFD5A0000CE464 /* NewsSportViewController.m */,
 				F9BE62F519CFD5A0000CE464 /* photosViewController.h */,
 				F9BE62F619CFD5A0000CE464 /* photosViewController.m */,
+				BCEB26A819CFE7E8005A24E2 /* NewsDetailViewController.h */,
+				BCEB26A919CFE7E8005A24E2 /* NewsDetailViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1165,6 +1167,7 @@
 				F9BE645619CFD5A0000CE464 /* YMImageAndLabelTool.m in Sources */,
 				F9BE642B19CFD5A0000CE464 /* SDWebImagePrefetcher.m in Sources */,
 				F9BE641A19CFD5A0000CE464 /* NSString+Hashing.m in Sources */,
+				BCEB26AA19CFE7E8005A24E2 /* NewsDetailViewController.m in Sources */,
 				F9BE642419CFD5A0000CE464 /* NSData+ImageContentType.m in Sources */,
 				F9BE641519CFD5A0000CE464 /* UIImageView+AFNetworking.m in Sources */,
 				F9BE644419CFD5A0000CE464 /* CarCell.m in Sources */,
