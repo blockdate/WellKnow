@@ -55,6 +55,8 @@
     [self loadData];
 }
 - (void)setUrl{
+    //_urlString = @"http://192.168.88.8/JudgeOnline-new/api.php?uid=8198&pid=3780&page=1";
+    //_urlString = @"http://192.168.88.8/JudgeOnline-new/api.php?uid=8198&pid=3780&page=1";
     _urlString = @"http://api.sina.cn/sinago/list.json?channel=news_sports";
 }
 - (void)configNavBar{
@@ -96,7 +98,7 @@
         NewsNormalModel *model = [_dataArray objectAtIndex:0];
         UILabel *l = [[UILabel alloc] init];
         l.text = model.intro;
-        CGFloat hight = [l currentSizeWithFont:13 MaxWidth:280].height + 182;
+        CGFloat hight = [l currentSizeWithFont:13 MaxWidth:280].height + 182+10;
         return hight;
     }
     else
