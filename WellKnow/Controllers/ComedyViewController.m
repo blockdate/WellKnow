@@ -52,7 +52,7 @@
 
 - (void)prepareTableView
 {
-    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, 320, [DeviceManager screenHeight]) style:UITableViewStylePlain];
+    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, [DeviceManager screenHeight]) style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;
     [self.view addSubview:_tableView];
