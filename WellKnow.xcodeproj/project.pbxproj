@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BCF3C3A319D01CE3003CDFBF /* TechnologyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF3C3A219D01CE3003CDFBF /* TechnologyViewController.m */; };
+		BCF3C3A819D040FA003CDFBF /* aftertomorrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF3C3A419D040FA003CDFBF /* aftertomorrow@2x.png */; };
+		BCF3C3A919D040FA003CDFBF /* hour@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF3C3A519D040FA003CDFBF /* hour@2x.png */; };
+		BCF3C3AA19D040FA003CDFBF /* tomorrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF3C3A619D040FA003CDFBF /* tomorrow@2x.png */; };
+		BCF3C3AB19D040FA003CDFBF /* week@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF3C3A719D040FA003CDFBF /* week@2x.png */; };
+		BCF3C3AD19D04558003CDFBF /* cateBg.png in Resources */ = {isa = PBXBuildFile; fileRef = BCF3C3AC19D04558003CDFBF /* cateBg.png */; };
 		F9243B8D19CFEEA70002F66B /* NewsInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9243B8B19CFEEA70002F66B /* NewsInfoCell.m */; };
 		F9243B8E19CFEEA70002F66B /* NewsInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9243B8C19CFEEA70002F66B /* NewsInfoCell.xib */; };
 		F9243B9119CFF6CA0002F66B /* NSString+Font.m in Sources */ = {isa = PBXBuildFile; fileRef = F9243B9019CFF6CA0002F66B /* NSString+Font.m */; };
@@ -168,6 +174,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BCF3C3A119D01CE3003CDFBF /* TechnologyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TechnologyViewController.h; sourceTree = "<group>"; };
+		BCF3C3A219D01CE3003CDFBF /* TechnologyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TechnologyViewController.m; sourceTree = "<group>"; };
+		BCF3C3A419D040FA003CDFBF /* aftertomorrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aftertomorrow@2x.png"; sourceTree = "<group>"; };
+		BCF3C3A519D040FA003CDFBF /* hour@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hour@2x.png"; sourceTree = "<group>"; };
+		BCF3C3A619D040FA003CDFBF /* tomorrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tomorrow@2x.png"; sourceTree = "<group>"; };
+		BCF3C3A719D040FA003CDFBF /* week@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "week@2x.png"; sourceTree = "<group>"; };
+		BCF3C3AC19D04558003CDFBF /* cateBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cateBg.png; sourceTree = "<group>"; };
 		F9243B8A19CFEEA70002F66B /* NewsInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsInfoCell.h; sourceTree = "<group>"; };
 		F9243B8B19CFEEA70002F66B /* NewsInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsInfoCell.m; sourceTree = "<group>"; };
 		F9243B8C19CFEEA70002F66B /* NewsInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsInfoCell.xib; sourceTree = "<group>"; };
@@ -531,6 +544,8 @@
 				F9BE62F619CFD5A0000CE464 /* photosViewController.m */,
 				F9243B9219D001D60002F66B /* NewsDetailViewController.h */,
 				F9243B9319D001D60002F66B /* NewsDetailViewController.m */,
+				BCF3C3A119D01CE3003CDFBF /* TechnologyViewController.h */,
+				BCF3C3A219D01CE3003CDFBF /* TechnologyViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -602,6 +617,11 @@
 		F9BE631819CFD5A0000CE464 /* Public */ = {
 			isa = PBXGroup;
 			children = (
+				BCF3C3AC19D04558003CDFBF /* cateBg.png */,
+				BCF3C3A419D040FA003CDFBF /* aftertomorrow@2x.png */,
+				BCF3C3A519D040FA003CDFBF /* hour@2x.png */,
+				BCF3C3A619D040FA003CDFBF /* tomorrow@2x.png */,
+				BCF3C3A719D040FA003CDFBF /* week@2x.png */,
 				F9BE631919CFD5A0000CE464 /* background_virtualline@2x.png */,
 				F9BE631A19CFD5A0000CE464 /* backgroundLightGray@2x.png */,
 				F9BE631B19CFD5A0000CE464 /* CarBg.png */,
@@ -1030,6 +1050,7 @@
 				F9BE644819CFD5A0000CE464 /* ComedyCell.xib in Resources */,
 				F9BE63FD19CFD5A0000CE464 /* CarBg1.png in Resources */,
 				F9BE63F919CFD5A0000CE464 /* white_view.png in Resources */,
+				BCF3C3A919D040FA003CDFBF /* hour@2x.png in Resources */,
 				F9BE63E819CFD5A0000CE464 /* toutiao@2x.png in Resources */,
 				F9BE62CB19CFD56A000CE464 /* Images.xcassets in Resources */,
 				F9BE63E319CFD5A0000CE464 /* finance@2x.png in Resources */,
@@ -1045,23 +1066,27 @@
 				F9BE640419CFD5A0000CE464 /* video@2x.png in Resources */,
 				F9BE641B19CFD5A0000CE464 /* MJRefresh.bundle in Resources */,
 				F9243B8E19CFEEA70002F66B /* NewsInfoCell.xib in Resources */,
+				BCF3C3AB19D040FA003CDFBF /* week@2x.png in Resources */,
 				F9BE63EA19CFD5A0000CE464 /* main_top_bg@2x.png in Resources */,
 				F9BE63D519CFD5A0000CE464 /* categorys.plist in Resources */,
 				F9BE63E219CFD5A0000CE464 /* comedy@2x.png in Resources */,
 				F9BE645219CFD5A0000CE464 /* SliderImageTableViewCell.xib in Resources */,
 				F9BE63E419CFD5A0000CE464 /* funny@2x.png in Resources */,
+				BCF3C3A819D040FA003CDFBF /* aftertomorrow@2x.png in Resources */,
 				F9BE63E719CFD5A0000CE464 /* tech@2x.png in Resources */,
 				F9BE63FB19CFD5A0000CE464 /* backgroundLightGray@2x.png in Resources */,
 				F9BE640119CFD5A0000CE464 /* Icon.png in Resources */,
 				F9BE63F819CFD5A0000CE464 /* nav_search_white@2x.png in Resources */,
 				F9BE63FA19CFD5A0000CE464 /* background_virtualline@2x.png in Resources */,
 				F9BE63F419CFD5A0000CE464 /* icon_share.png in Resources */,
+				BCF3C3AD19D04558003CDFBF /* cateBg.png in Resources */,
 				F9BE63F519CFD5A0000CE464 /* nav_back@2x.png in Resources */,
 				F9BE643719CFD5A0000CE464 /* subject@2x.png in Resources */,
 				F9BE63DF19CFD5A0000CE464 /* cell1-qreply.png in Resources */,
 				F9BE63F219CFD5A0000CE464 /* top_right_menu_button@2x.png in Resources */,
 				F9BE640019CFD5A0000CE464 /* Defaults.png in Resources */,
 				F9BE640519CFD5A0000CE464 /* subject in Resources */,
+				BCF3C3AA19D040FA003CDFBF /* tomorrow@2x.png in Resources */,
 				F9BE63FE19CFD5A0000CE464 /* cell2-qreply.png in Resources */,
 				F9BE63E919CFD5A0000CE464 /* main_top_bg.png in Resources */,
 				F9BE644519CFD5A0000CE464 /* CarCell.xib in Resources */,
@@ -1128,6 +1153,7 @@
 				F9BE642019CFD5A0000CE464 /* UIScrollView+Extension.m in Sources */,
 				F9BE640919CFD5A0000CE464 /* AFHTTPRequestOperationManager.m in Sources */,
 				F9BE641419CFD5A0000CE464 /* UIButton+AFNetworking.m in Sources */,
+				BCF3C3A319D01CE3003CDFBF /* TechnologyViewController.m in Sources */,
 				F9BE643C19CFD5A0000CE464 /* UIImageView+ETTools.m in Sources */,
 				F9BE642E19CFD5A0000CE464 /* UIImage+MultiFormat.m in Sources */,
 				F9BE641219CFD5A0000CE464 /* UIActivityIndicatorView+AFNetworking.m in Sources */,

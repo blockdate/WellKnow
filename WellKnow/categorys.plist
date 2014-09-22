@@ -24,7 +24,7 @@
 		<key>iconName</key>
 		<string>tech.png</string>
 		<key>controllerName</key>
-		<string>photosViewController</string>
+		<string>TechnologyViewController</string>
 	</dict>
 	<dict>
 		<key>iconName</key>
