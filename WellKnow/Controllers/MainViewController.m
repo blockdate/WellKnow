@@ -10,7 +10,7 @@
 #import "photosViewController.h"
 #import "ETRequestManager.h"
 #import "TopIconCollectionCell.h"
-#import "SliderImageTableViewCell.h"
+#import "WeatherInfoCell.h"
 #import "NewsNormalModel.h"
 #import "DeviceManager.h"
 #import "NewsInfoCell.h"
@@ -21,12 +21,18 @@
     NSMutableArray *_bottomTableDataArray;
     NSMutableArray *_middleDataArray;
     UITableView *_tableView;
+    NSMutableData *_data;
+    WeatherModel *_weatherModel;
 }
 
 @end
 
 static NSString * const kRequestUrlString = @"http://api.sina.cn/sinago/list.json?channel=news_toutiao";
+//static NSString * const kWeatherUrlString = @"http://www.weather.com.cn/data/zs/101010100.html";
+//http://wthrcdn.etouch.cn/weather_mini?citykey=101010100
+//static NSString * const kWeatherUrlString = @"http://weatherapi.market.xiaomi.com/wtr-v2/weather?cityId=101010100";
 
+static NSString * const kWeatherUrlString = @"http://wthrcdn.etouch.cn/weather_mini?citykey=101010100";
 @implementation MainViewController
 
 - (void)viewDidLoad
@@ -40,6 +46,20 @@ static NSString * const kRequestUrlString = @"http://api.sina.cn/sinago/list.jso
 - (void)prepareData{
     _bottomTableDataArray = [[NSMutableArray alloc]init];
     _middleDataArray = [[NSMutableArray alloc]init];
+}
+
+- (void)loadData{
+    [self loadNewsInfo];
+    [self loadWeatherInfo];
+}
+
+- (void)prepareUI{
+    [self prepareNavItems];
+    [self prepareTableView];
+}
+
+- (void)prepareNavItems{
+    [self setNavgationBarTitle:@"首页"];
 }
 
 - (void)analyzeResult:(id)result {
@@ -57,7 +77,8 @@ static NSString * const kRequestUrlString = @"http://api.sina.cn/sinago/list.jso
     [_tableView reloadData];
 }
 
-- (void)loadData{
+//新闻信息获取
+- (void)loadNewsInfo {
     [[ETRequestManager sharedManager]requestUsingCache:YES TargetWithUrlString:kRequestUrlString requestType:HttpRequestTypeGET params:nil showWaitDialog:YES finised:^(id result) {
         [self performSelectorOnMainThread:@selector(analyzeResult:) withObject:result waitUntilDone:NO];
     } failed:^(id result) {
@@ -65,13 +86,42 @@ static NSString * const kRequestUrlString = @"http://api.sina.cn/sinago/list.jso
     }];
 }
 
-- (void)prepareUI{
-    [self prepareNavItems];
-    [self prepareTableView];
+- (NSInteger)getCurrentDay:(NSDictionary *)dic {
+    NSArray *day = @[@"一",@"二",@"三",@"四",@"五",@"六",@"日"];
+    NSDictionary *dic1 = dic[@"data"];
+    NSDictionary *yesDic = dic1[@"yesterday"];
+    NSString *yesterdayWeather = yesDic [@"date"];
+    NSInteger curDay = 0;
+    for (NSString *str in day) {
+        curDay++;
+        if ([yesterdayWeather hasSuffix:str]) {
+            break;
+        }
+    }
+    return curDay;
 }
 
-- (void)prepareNavItems{
-    [self setNavgationBarTitle:@"首页"];
+- (NSArray *)getWholeWeekWeatherInfo:(NSDictionary *)dic{
+    NSMutableArray *array = [NSMutableArray array];
+    NSDictionary *dic1 = dic[@"data"];
+    NSArray *everyArray = dic1[@"forecast"];
+    for (NSDictionary *perDic in everyArray) {
+        WeatherModel *model = [[WeatherModel alloc]init];
+        [model setValuesForKeysWithDictionary:perDic];
+        [array addObject:model];
+    }
+    return [array copy];
+}
+
+//天气信息获取
+- (void)weatherInfoLoad:(NSDictionary *)dic{
+    ETLog(@"%@", dic);
+    if ([dic[@"desc"] isEqualToString:@"OK"]) {
+        NSInteger curDay = [self getCurrentDay:dic];
+        NSArray *wholeWeather = [self getWholeWeekWeatherInfo:dic];
+        _weatherModel = wholeWeather[curDay-1];
+        [_tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:0 inSection:1]] withRowAnimation:UITableViewRowAnimationFade];
+    }
 }
 
 - (void)registerNibForTableView:(NSString *)st {
@@ -90,7 +140,7 @@ static NSString * const kRequestUrlString = @"http://api.sina.cn/sinago/list.jso
 //    _tableView.backgroundColor = [UIColor lightGrayColor];
     [self.view addSubview:_tableView];
     [self registerNibForTableView:@"TopIconCollectionCell"];
-    [self registerNibForTableView:@"SliderImageTableViewCell"];
+    [self registerNibForTableView:@"WeatherInfoCell"];
     [self registerNibForTableView:@"NewsInfoCell"];
 }
 
@@ -152,7 +202,10 @@ static NSString * const kRequestUrlString = @"http://api.sina.cn/sinago/list.jso
         [mcell setIconImageArray:[self getTopIconNameArray]];
         cell = mcell;
     }else if(1 == indexPath.section){
-        SliderImageTableViewCell *mcell = [tableView dequeueReusableCellWithIdentifier:@"SliderImageTableViewCell" forIndexPath:indexPath];
+        WeatherInfoCell *mcell = [tableView dequeueReusableCellWithIdentifier:@"WeatherInfoCell" forIndexPath:indexPath];
+        if (_weatherModel) {
+            [mcell setWeatherInfo:_weatherModel];
+        }
         cell = mcell;
     }else{
         NewsNormalModel *model = _bottomTableDataArray[indexPath.row];
@@ -163,14 +216,14 @@ static NSString * const kRequestUrlString = @"http://api.sina.cn/sinago/list.jso
         [mcell.customTitleLabel fixToSystemTitleSizeWithMaxWidth:240];
         
         mcell.customDetailLabel.text = model.intro;
-        [mcell.customDetailLabel fixToSystemSubTitleSizeWithMaxWidth:220];
+        [mcell.customDetailLabel fixToSystemSubTitleSizeWithMaxWidth:210];
         cell = mcell;
+        
     }
     
     return cell;
 }
 
-#pragma mark - Table view delegate
 #pragma mark 单元行被选中
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (2 == indexPath.section) {
@@ -180,6 +233,7 @@ static NSString * const kRequestUrlString = @"http://api.sina.cn/sinago/list.jso
     //    取消反选
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
 #pragma mark -
 #pragma mark private method
 - (NSArray *)getTopIconNameArray{
@@ -199,4 +253,23 @@ static NSString * const kRequestUrlString = @"http://api.sina.cn/sinago/list.jso
     }
     return resultArray;
 }
+
+- (void)loadWeatherInfo{
+    _data = [[NSMutableData alloc]init];
+    NSURLConnection *connect = [NSURLConnection connectionWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:kWeatherUrlString]] delegate:self];
+    [connect start];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response{
+    _data.length = 0;
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
+    [_data appendData:data];
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection{
+    [self performSelectorOnMainThread:@selector(weatherInfoLoad:) withObject:[NSJSONSerialization JSONObjectWithData:_data options:NSJSONReadingMutableContainers error:nil] waitUntilDone:NO];
+}
+
 @end
