@@ -70,8 +70,8 @@
 
 - (void)f{
     NSMutableArray *imageArray = [NSMutableArray array];
-    for (NSInteger i = 7; i<=8; i++) {
-//    for (NSInteger i = 14; i<=17; i++) {
+//    for (NSInteger i = 7; i<=8; i++) {
+    for (NSInteger i = 14; i<=17; i++) {
         UIImage *image = [UIImage imageNamed:[NSString stringWithFormat:@"w%ld",i]];
         [imageArray addObject:image];
     }
