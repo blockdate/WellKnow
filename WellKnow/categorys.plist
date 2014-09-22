@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>iconName</key>
+		<string>toutiao.png</string>
+		<key>controllerName</key>
+		<string>photosViewController</string>
+	</dict>
+	<dict>
+		<key>iconName</key>
+		<string>sports.png</string>
+		<key>controllerName</key>
+		<string>NewsSportViewController</string>
+	</dict>
+	<dict>
+		<key>iconName</key>
+		<string>funny.png</string>
+		<key>controllerName</key>
+		<string>FunnyViewController</string>
+	</dict>
+	<dict>
+		<key>iconName</key>
+		<string>tech.png</string>
+		<key>controllerName</key>
+		<string>photosViewController</string>
+	</dict>
+	<dict>
+		<key>iconName</key>
+		<string>finance.png</string>
+		<key>controllerName</key>
+		<string>BusinessViewController</string>
+	</dict>
+	<dict>
+		<key>iconName</key>
+		<string>comedy.png</string>
+		<key>controllerName</key>
+		<string>ComedyViewController</string>
+	</dict>
+	<dict>
+		<key>iconName</key>
+		<string>car.png</string>
+		<key>controllerName</key>
+		<string>CarViewController</string>
+	</dict>
+	<dict>
+		<key>iconName</key>
+		<string>photos.png</string>
+		<key>controllerName</key>
+		<string>photosViewController</string>
+	</dict>
+</array>
+</plist>
