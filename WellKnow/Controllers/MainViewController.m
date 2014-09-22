@@ -163,7 +163,7 @@ static NSString * const kRequestUrlString = @"http://api.sina.cn/sinago/list.jso
         [mcell.customTitleLabel fixToSystemTitleSizeWithMaxWidth:240];
         
         mcell.customDetailLabel.text = model.intro;
-        [mcell.customDetailLabel fixToSystemSubTitleSizeWithMaxWidth:220];
+        [mcell.customDetailLabel fixToSystemSubTitleSizeWithMaxWidth:210];
         cell = mcell;
     }
     
