@@ -83,7 +83,6 @@
         [_tableView reloadData];
         
     } failed:^(id result) {
-        ETLog(@"error");
     }];
 }
 
@@ -158,7 +157,6 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"index.row %d",indexPath.row);
     if (indexPath.row != 1) {
         NewsNormalModel *model ;
         if (indexPath.row == 0) {

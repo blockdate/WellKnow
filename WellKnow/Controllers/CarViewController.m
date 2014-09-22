@@ -49,7 +49,7 @@ static NSString * const CarUrlString = @"http://api.sina.cn/sinago/list.json?cha
 - (void)prepareTableView
 {
     //tableView
-    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(8, 67, 300, [DeviceManager screenHeight]) style:UITableViewStyleGrouped];
+    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(8, 5, 300, [DeviceManager screenHeight]) style:UITableViewStyleGrouped];
     _tableView.backgroundColor=[UIColor colorWithWhite:0.9 alpha:0];
     _tableView.delegate=self;
     _tableView.dataSource=self;

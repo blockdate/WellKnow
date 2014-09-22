@@ -43,7 +43,6 @@ static NSString * const kRequestUrlString = @"http://api.sina.cn/sinago/list.jso
 - (void)analyzeResult:(id)result {
     NSDictionary *dic = (NSDictionary *)[result objectForKey:@"data"];
     NSArray *listArray = dic[@"list"];
-    ETLog(@"%@",result);
     for (NSDictionary *perDic in listArray) {
         NewsNormalModel *model = [[NewsNormalModel alloc]init];
         [model setValuesForKeysWithDictionary:perDic];
@@ -93,7 +92,6 @@ static NSString * const kRequestUrlString = @"http://api.sina.cn/sinago/list.jso
     [self registerNibForTableView:@"NewsInfoCell"];
 }
 
-#pragma mark -
 #pragma mark 点击事件
 //顶部九宫格按钮点击
 - (void)topIconClick:(UIButton *)sender{
