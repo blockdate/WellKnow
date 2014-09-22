@@ -65,7 +65,8 @@ static ETRequestManager *manager;
     
     *faile_p = ^(id result){
         [_requestDic removeObjectForKey:urlString];
-        [SVProgressHUD dismiss];
+        [SVProgressHUD dismissWithError:@"网络错误"];
+        ETLog(@"%@", result);
         failedBlock(result);
     };
 }
