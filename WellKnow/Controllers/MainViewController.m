@@ -16,9 +16,8 @@
 #import "NewsInfoCell.h"
 #import "UIImageView+WebCache.h"
 #import "NewsDetailViewController.h"
-#import "AFHTTPRequestOperationManager.h"
-#import "WeatherModel.h"
-@interface MainViewController ()<UITableViewDataSource, UITableViewDelegate, NSURLConnectionDataDelegate>{
+#import "NSString+Font.h"
+@interface MainViewController ()<UITableViewDataSource, UITableViewDelegate>{
     NSMutableArray *_bottomTableDataArray;
     NSMutableArray *_middleDataArray;
     UITableView *_tableView;
