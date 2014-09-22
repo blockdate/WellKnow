@@ -43,7 +43,7 @@
     [self setNavgationBarTitle:@"图片"];//标题
     _dataArray=[[NSMutableArray alloc]init];
     _listDataArray =[[NSMutableArray alloc]init];
-    _photosView=[[PhotosView alloc]initWithFrame:CGRectMake(0, 0, 320, 150)];
+    _photosView=[[PhotosView alloc]initWithFrame:CGRectMake(0, 0, 320, 200)];
     //tableView
     CGFloat height=[UIScreen mainScreen].bounds.size.height;
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320,height) style:UITableViewStylePlain];

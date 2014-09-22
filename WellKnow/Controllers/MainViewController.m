@@ -173,8 +173,10 @@ static NSString * const kRequestUrlString = @"http://api.sina.cn/sinago/list.jso
 #pragma mark - Table view delegate
 #pragma mark 单元行被选中
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    NewsDetailViewController *vc = [[NewsDetailViewController alloc]initWithModel:_bottomTableDataArray[indexPath.row]];
-    [self.navigationController pushViewController:vc animated:YES];
+    if (2 == indexPath.section) {
+        NewsDetailViewController *vc = [[NewsDetailViewController alloc]initWithModel:_bottomTableDataArray[indexPath.row]];
+        [self.navigationController pushViewController:vc animated:YES];
+    }
     //    取消反选
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
