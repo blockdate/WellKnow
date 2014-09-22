@@ -17,7 +17,7 @@
     NSMutableArray *_dataArray;//顶部scrollView数据源
     NSMutableArray *_listDataArray;//顶部下方
     PhotosView *_photosView;
-    int il;
+
 }
 
 @end
