@@ -15,4 +15,6 @@
 - (void)setNavigationItemWithText:(NSString *)title imageName:(NSString *)imageName selector:(SEL)selector onLeft:(BOOL)isLeft;
 
 - (void)addSimpleNavigationBackButton;
+
+- (void)addSimpleNavigationBackButtonWithaction:(SEL)selector;
 @end

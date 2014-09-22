@@ -10,6 +10,7 @@
 		F9243B8D19CFEEA70002F66B /* NewsInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9243B8B19CFEEA70002F66B /* NewsInfoCell.m */; };
 		F9243B8E19CFEEA70002F66B /* NewsInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9243B8C19CFEEA70002F66B /* NewsInfoCell.xib */; };
 		F9243B9119CFF6CA0002F66B /* NSString+Font.m in Sources */ = {isa = PBXBuildFile; fileRef = F9243B9019CFF6CA0002F66B /* NSString+Font.m */; };
+		F9243B9419D001D60002F66B /* NewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9243B9319D001D60002F66B /* NewsDetailViewController.m */; };
 		F9BE62B319CFD56A000CE464 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BE62B219CFD56A000CE464 /* Foundation.framework */; };
 		F9BE62B519CFD56A000CE464 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BE62B419CFD56A000CE464 /* CoreGraphics.framework */; };
 		F9BE62B719CFD56A000CE464 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BE62B619CFD56A000CE464 /* UIKit.framework */; };
@@ -172,6 +173,8 @@
 		F9243B8C19CFEEA70002F66B /* NewsInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsInfoCell.xib; sourceTree = "<group>"; };
 		F9243B8F19CFF6CA0002F66B /* NSString+Font.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Font.h"; sourceTree = "<group>"; };
 		F9243B9019CFF6CA0002F66B /* NSString+Font.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Font.m"; sourceTree = "<group>"; };
+		F9243B9219D001D60002F66B /* NewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDetailViewController.h; sourceTree = "<group>"; };
+		F9243B9319D001D60002F66B /* NewsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDetailViewController.m; sourceTree = "<group>"; };
 		F9BE62AF19CFD56A000CE464 /* WellKnow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WellKnow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9BE62B219CFD56A000CE464 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F9BE62B419CFD56A000CE464 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -512,6 +515,8 @@
 		F9BE62E819CFD5A0000CE464 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F9243B9219D001D60002F66B /* NewsDetailViewController.h */,
+				F9243B9319D001D60002F66B /* NewsDetailViewController.m */,
 				F9BE62E919CFD5A0000CE464 /* BusinessViewController.h */,
 				F9BE62EA19CFD5A0000CE464 /* BusinessViewController.m */,
 				F9BE62EB19CFD5A0000CE464 /* CarViewController.h */,
@@ -526,8 +531,6 @@
 				F9BE62F419CFD5A0000CE464 /* NewsSportViewController.m */,
 				F9BE62F519CFD5A0000CE464 /* photosViewController.h */,
 				F9BE62F619CFD5A0000CE464 /* photosViewController.m */,
-				BCEB26A819CFE7E8005A24E2 /* NewsDetailViewController.h */,
-				BCEB26A919CFE7E8005A24E2 /* NewsDetailViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1137,6 +1140,7 @@
 				F9BE642619CFD5A0000CE464 /* SDWebImageCompat.m in Sources */,
 				F9BE63D719CFD5A0000CE464 /* CarViewController.m in Sources */,
 				F9BE63DA19CFD5A0000CE464 /* MainViewController.m in Sources */,
+				F9243B9419D001D60002F66B /* NewsDetailViewController.m in Sources */,
 				F9BE62C319CFD56A000CE464 /* AppDelegate.m in Sources */,
 				F9BE642219CFD5A0000CE464 /* UIView+Extension.m in Sources */,
 				F9BE645319CFD5A0000CE464 /* TopIconCollectionCell.m in Sources */,
@@ -1167,7 +1171,6 @@
 				F9BE645619CFD5A0000CE464 /* YMImageAndLabelTool.m in Sources */,
 				F9BE642B19CFD5A0000CE464 /* SDWebImagePrefetcher.m in Sources */,
 				F9BE641A19CFD5A0000CE464 /* NSString+Hashing.m in Sources */,
-				BCEB26AA19CFE7E8005A24E2 /* NewsDetailViewController.m in Sources */,
 				F9BE642419CFD5A0000CE464 /* NSData+ImageContentType.m in Sources */,
 				F9BE641519CFD5A0000CE464 /* UIImageView+AFNetworking.m in Sources */,
 				F9BE644419CFD5A0000CE464 /* CarCell.m in Sources */,

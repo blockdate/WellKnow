@@ -25,6 +25,10 @@
     return self;
 }
 
+- (void)viewDidDisappear:(BOOL)animated{
+    [SVProgressHUD dismiss];
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -43,6 +47,7 @@
 
 - (void)configUI{
     self.view.backgroundColor = [UIColor whiteColor];
+    [self addSimpleNavigationBackButtonWithaction:@selector(navigationBackButtonClick)];
     _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 320, [DeviceManager screenHeight])];
     NSURL *url = [NSURL URLWithString:_newsModel.link];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -69,6 +74,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)navigationBackButtonClick{
+    [self.navigationController popViewControllerAnimated:YES];
+    [SVProgressHUD dismiss];
 }
 
 @end

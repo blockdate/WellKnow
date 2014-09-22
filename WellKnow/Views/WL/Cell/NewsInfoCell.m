@@ -12,8 +12,8 @@
 
 - (void)awakeFromNib
 {
-    _backGroundView.backgroundColor = [UIColor lightGrayColor];
-    [_customImageView changeToRoundRectWithColor:[UIColor whiteColor]];
+    _backGroundView.backgroundColor = [UIColor whiteColor];
+    [_customImageView changeToRoundRectWithColor:[UIColor lightGrayColor]];
     self.backgroundColor = [UIColor clearColor];
 }
 
