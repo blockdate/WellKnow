@@ -9,6 +9,8 @@
 #import "TechnologyViewController.h"
 #import "ETRequestManager.h"
 #import "NewsNormalModel.h"
+#import "ComedyCell.h"
+#import "UIImageView+WebCache.h"
 
 @interface TechnologyViewController ()
 {
@@ -20,7 +22,7 @@
 @implementation TechnologyViewController
 #define firstUrlString @"http://api.sina.cn/sinago/list.json?channel=news_tech"
 #define secondUrlString @"http://api.sina.cn/sinago/list.json?channel=local_beijing"
-#define thirdUrlString @"http://api.sina.cn/sinago/list.json?channel=news_tech"
+#define thirdUrlString @"http://api.sina.cn/sinago/list.json?channel=news_auto"
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,15 +38,30 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.view.backgroundColor=[UIColor whiteColor];
+    _dataArray=[[NSMutableArray alloc]init];
     [self addSimpleNavigationBackButton];
     [self setNavgationBarTitle:@"科技"];
     [self createCate];//四个分类
     //tableView
-    CGFloat height=[UIScreen mainScreen].bounds.size.height;
-    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 145, 320, height) style:UITableViewStylePlain];
+    CGFloat height=[UIScreen mainScreen].bounds.size.height-150;
+    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 150, 320, height) style:UITableViewStyleGrouped];
     _tableView.delegate=self;
     _tableView.dataSource=self;
     [self.view addSubview:_tableView];
+    
+    //httpRequest
+    [[ETRequestManager sharedManager]requestWithUrlString:firstUrlString requestType:HttpRequestTypeGET params:nil showWaitDialog:YES finised:^(id result) {
+        NSDictionary *dic=[(NSDictionary *)result objectForKey:@"data"];
+        NSArray *list=dic[@"list"];
+        for (NSDictionary *perDic in list) {
+            NewsNormalModel *model=[[NewsNormalModel alloc]init];
+            [model setValuesForKeysWithDictionary:perDic];
+            [_dataArray addObject:model];
+        }
+        [_tableView reloadData];
+    } failed:^(id result) {
+    }];
+
 }
 
 #pragma mark -四个分类 (24小时、昨天、前天、一周)
@@ -70,7 +87,7 @@
         [bgImageView addSubview:label];
     }
     //细线
-    UILabel *line=[[UILabel alloc]initWithFrame:CGRectMake(5, 143, 310, 1)];
+    UILabel *line=[[UILabel alloc]initWithFrame:CGRectMake(5, 148, 310, 1)];
     line.backgroundColor=[UIColor colorWithWhite:0.9 alpha:1];
     [self.view addSubview:line];
     [self.view addSubview:bgImageView];
@@ -90,6 +107,7 @@
         } failed:^(id result) {
         }];
     }else if (btn.tag==101){
+        [_dataArray removeAllObjects];
         [[ETRequestManager sharedManager]requestWithUrlString:secondUrlString requestType:HttpRequestTypeGET params:nil showWaitDialog:YES finised:^(id result) {
             NSDictionary *dic=[(NSDictionary *)result objectForKey:@"data"];
             NSArray *list=dic[@"list"];
@@ -102,6 +120,7 @@
         } failed:^(id result) {
         }];
     }else{
+        [_dataArray removeAllObjects];
         [[ETRequestManager sharedManager]requestWithUrlString:thirdUrlString requestType:HttpRequestTypeGET params:nil showWaitDialog:YES finised:^(id result) {
             NSDictionary *dic=[(NSDictionary *)result objectForKey:@"data"];
             NSArray *list=dic[@"list"];
@@ -121,14 +140,71 @@
     return 2;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return _dataArray.count;
+    if (section==0) {
+        return 1;
+    }
+    return _dataArray.count-1;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 80;
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    return 10;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 15;
+}
 #pragma mark -tableView dataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell;
+    if (indexPath.section==0) {
+        ComedyCell *tech=[tableView dequeueReusableCellWithIdentifier:@"ComedyCell"];
+        if (tech==nil) {
+            tech=[[[NSBundle mainBundle]loadNibNamed:@"ComedyCell" owner:self options:nil]lastObject];
+        }
+        NewsNormalModel *model=_dataArray.lastObject;
+        [tech.picImageView setImageWithURL:[NSURL URLWithString:model.pic]];
+        [tech.titleLabel setText:model.title];
+        [tech.introLabel setText:model.intro];
+        [tech.commentLabel setText:[NSString stringWithFormat:@"%@",[model.comment_count_info objectForKey:@"total"]]];
+        if ([model.category isEqualToString:@"video"]) {
+            [tech.cateGroyImageView setImage:[UIImage imageNamed:@"video"]];
+            [tech.cateGoryLabel setText:@"视频"];
+            [tech.cateGoryLabel setTextColor:[UIColor colorWithRed:35.0/255 green:120.0/255 blue:250.0/255 alpha:1]];
+        }else if ([model.category isEqualToString:@"subject"]){
+            [tech.cateGroyImageView setImage:[UIImage imageNamed:@"subject"]];
+            [tech.cateGoryLabel setText:@"专题"];
+            [tech.cateGoryLabel setTextColor:[UIColor redColor]];
+        }else{
+            [tech.cateGroyImageView setImage:[UIImage imageNamed:@" "]];
+            [tech.cateGoryLabel setText:@" "];
+        }
+        cell=tech;
+    }else{
+        ComedyCell *tech1=[tableView dequeueReusableCellWithIdentifier:@"ComedyCell"];
+        if (tech1==nil) {
+            tech1=[[[NSBundle mainBundle]loadNibNamed:@"ComedyCell" owner:self options:nil]lastObject];
+        }
+        NewsNormalModel *model=_dataArray[indexPath.row];
+        [tech1.picImageView setImageWithURL:[NSURL URLWithString:model.pic]];
+        [tech1.titleLabel setText:model.title];
+        [tech1.introLabel setText:model.intro];
+        [tech1.commentLabel setText:[NSString stringWithFormat:@"%@",[model.comment_count_info objectForKey:@"total"]]];
+        if ([model.category isEqualToString:@"video"]) {
+            [tech1.cateGroyImageView setImage:[UIImage imageNamed:@"video"]];
+            [tech1.cateGoryLabel setText:@"视频"];
+            [tech1.cateGoryLabel setTextColor:[UIColor colorWithRed:35.0/255 green:120.0/255 blue:250.0/255 alpha:1]];
+        }else if ([model.category isEqualToString:@"subject"]){
+            [tech1.cateGroyImageView setImage:[UIImage imageNamed:@"subject"]];
+            [tech1.cateGoryLabel setText:@"专题"];
+            [tech1.cateGoryLabel setTextColor:[UIColor redColor]];
+        }else{
+            [tech1.cateGroyImageView setImage:[UIImage imageNamed:@" "]];
+            [tech1.cateGoryLabel setText:@" "];
+        }
+
+        cell=tech1;
+    }
     return cell;
 }
 

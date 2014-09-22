@@ -69,14 +69,14 @@
 }
 
 - (void)addPerImageAt:(NSInteger)i imageUrlName:(NSString *)imageName {
-    UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(5+320*i, 10, 310, self.frame.size.height/2)];
+    UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(5+320*i, 10, 310, self.frame.size.height/2+20)];
     [imageView setImageWithURL:[NSURL URLWithString:imageName]];
     [_scrollView addSubview:imageView];
 }
 
 - (void)addPerTextAt:(NSInteger)i text:(NSString *)text {
     //标题
-    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10+320*i, self.frame.size.height/2, 300, self.frame.size.height/2)];
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10+320*i, self.frame.size.height/2+10, 300, self.frame.size.height/2)];
     [label setText:text];
     label.font = [UIFont systemFontOfSize:[DeviceManager systemTextSize]-2];
     [label setTextColor:[UIColor grayColor]];
