@@ -27,14 +27,14 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 
 - (void)configUIWithModel:(NewsNormalModel *)model{
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, 280, 20)];
     titleLabel.text = model.title;
-//    [titleLabel fixToSystemTitleSize];
+    //    [titleLabel fixToSystemTitleSize];
     [self.contentView addSubview:titleLabel];
     
     UIImageView *picImageView = [[UIImageView alloc] initWithFrame:CGRectMake(20, 40, 280, 140)];
@@ -45,7 +45,7 @@
     [infoLabel setTextColor:[UIColor grayColor]];
     infoLabel.font = [UIFont systemFontOfSize:[DeviceManager systemTextSize]-3];
     infoLabel.frame = CGRectMake(20, 182, 280,  0);
-
+    
     
     infoLabel.text = model.intro;
     infoLabel.numberOfLines = 0;

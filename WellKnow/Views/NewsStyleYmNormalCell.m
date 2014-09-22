@@ -24,7 +24,7 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-
+        
         _newImage = [[UIImageView alloc] initWithFrame:CGRectMake(240, 10, 70, 60)];
         [self.contentView addSubview: _newImage];
         
@@ -32,13 +32,13 @@
         [self.contentView addSubview:_titlelabel];
         
         _detail = [[UILabel alloc] initWithFrame:CGRectMake(20, 34, 210, 21)];
-         _detail.font = [UIFont systemFontOfSize:[DeviceManager systemTextSize]-2];
+        _detail.font = [UIFont systemFontOfSize:[DeviceManager systemTextSize]-2];
         [_detail setTextColor:[UIColor grayColor]];
         [self.contentView addSubview:_detail];
         
         _iconImage = [[UIImageView alloc] initWithFrame:CGRectMake(20, 58, 10 , 10)];
         [self.contentView addSubview:_iconImage];
-
+        
         _iconText = [[UILabel alloc] initWithFrame:CGRectMake(33, 58, 50, 10)];
         _iconText.font = [UIFont systemFontOfSize:9];
         _iconText.textColor = [UIColor blueColor];
@@ -53,11 +53,11 @@
 }
 
 - (void)configCell:(NewsNormalModel *)model{
-
-
+    
+    
     [_newImage setImageWithURL:[NSURL URLWithString:model.pic]];
     _titlelabel.text = model.title;
-  //  [_titlelabel fixToSystemTitleSizeWithMaxWidth:230];
+    //  [_titlelabel fixToSystemTitleSizeWithMaxWidth:230];
     _detail.text = model.intro;
     [_detail fixToSystemSubTitleSizeWithMaxWidth:230];
     if ([model.category isEqualToString:@"video"]) {
@@ -73,7 +73,7 @@
         _iconText.hidden = NO;
         _iconImage.hidden = NO;
     }else {
-
+        
         _iconText.hidden = YES;
         _iconImage.hidden = YES;
     }
@@ -84,7 +84,7 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 
