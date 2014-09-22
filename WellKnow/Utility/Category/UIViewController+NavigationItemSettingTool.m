@@ -39,7 +39,11 @@
 }
 
 - (void)addSimpleNavigationBackButton{
-    [self setNavigationItemWithText:@"" imageName:@"returnBtn.png" selector:@selector(navigationBackButtonClicked:) onLeft:YES];
+    [self addSimpleNavigationBackButtonWithaction:@selector(navigationBackButtonClicked:)];
+}
+
+- (void)addSimpleNavigationBackButtonWithaction:(SEL)selector{
+    [self setNavigationItemWithText:@"" imageName:@"returnBtn.png" selector:selector onLeft:YES];
 }
 
 - (void)navigationBackButtonClicked:(UIButton *)sender{

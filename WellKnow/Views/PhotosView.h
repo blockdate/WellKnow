@@ -11,5 +11,5 @@
 @interface PhotosView : UIView <UIScrollViewDelegate>
 
 - (void)sendDataArray:(NSArray *)array;
-
+- (void)setTitleArray:(NSArray *)titleArray andImageUrlArray:(NSArray *)imageArray;
 @end

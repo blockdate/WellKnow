@@ -26,12 +26,19 @@
     [self changeRadio:5];
 }
 
+- (void)changeToRoundRectWithColor:(UIColor *)color{
+    [self changeRadio:5 color:color];
+}
+
+- (void)changeRadio:(CGFloat)r color:(UIColor *)color{
+    self.layer.masksToBounds = YES;
+    self.layer.borderColor = [color CGColor];
+    self.layer.borderWidth = 2;
+    self.layer.cornerRadius = r;
+}
 
 - (void)changeRadio:(CGFloat)r{
-    self.layer.masksToBounds = YES;
-    self.layer.borderColor = [[UIColor clearColor] CGColor];
-    self.layer.borderWidth = 1;
-    self.layer.cornerRadius = r;
+    [self changeRadio:r color:[UIColor clearColor]];
 }
 
 - (void)blurry:(float)blu{

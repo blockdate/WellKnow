@@ -38,14 +38,26 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self setNavgationBarTitle:@"搞笑"];
+    [self addSimpleNavigationBackButton];
+    [self prepareData];
+    [self prepareTableView];
+    [self loadData];//数据请求
+}
+
+- (void)prepareData
+{
     _dataArray=[[NSMutableArray alloc]init];
-    CGFloat height=[UIScreen mainScreen].bounds.size.height;
-    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 0, 320, height) style:UITableViewStylePlain];
+}
+
+- (void)prepareTableView
+{
+    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, 320, [DeviceManager screenHeight]) style:UITableViewStylePlain];
     _tableView.delegate=self;
     _tableView.dataSource=self;
     [self.view addSubview:_tableView];
-    [self loadData];//数据请求
 }
+
 #pragma mark -httpRequest
 - (void)loadData{
     [[ETRequestManager sharedManager]requestWithUrlString:ComedyUrlString requestType:HttpRequestTypeGET params:nil showWaitDialog:YES finised:^(id result) {

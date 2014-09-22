@@ -14,4 +14,5 @@
 - (void)blurry:(float)blu;
 - (void)changeToRound;
 - (void)changeToRoundRect;
+- (void)changeToRoundRectWithColor:(UIColor *)color;
 @end

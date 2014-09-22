@@ -9,11 +9,22 @@
 #import "PhotosView.h"
 #import "UIImageView+WebCache.h"
 #import "NewsNormalModel.h"
-
+#import "DeviceManager.h"
 @implementation PhotosView{
     UIScrollView *_scrollView;
     UIPageControl *_pageControl;
     NSArray *_modelArray;
+}
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self addScrollView];
+        [self addPageControl];
+        [self drawBottomLine];
+    }
+    return self;
 }
 
 - (void)addScrollView
@@ -50,40 +61,50 @@
     [self addSubview:line];
 }
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self addScrollView];
-        [self addPageControl];
-        [self drawBottomLine];
-    }
-    return self;
-}
+
 
 - (void)setScrollViewPages:(NSInteger)pageCount {
-    _scrollView.contentSize=CGSizeMake(320*pageCount, 200);
+    _scrollView.contentSize=CGSizeMake(320*pageCount, self.frame.size.height);
+    [_pageControl setNumberOfPages:pageCount];
+}
+
+- (void)addPerImageAt:(NSInteger)i imageUrlName:(NSString *)imageName {
+    UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(5+320*i, 10, 310, self.frame.size.height/2)];
+    [imageView setImageWithURL:[NSURL URLWithString:imageName]];
+    [_scrollView addSubview:imageView];
+}
+
+- (void)addPerTextAt:(NSInteger)i text:(NSString *)text {
+    //标题
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10+320*i, self.frame.size.height/2, 300, self.frame.size.height/2)];
+    [label setText:text];
+    label.font = [UIFont systemFontOfSize:[DeviceManager systemTextSize]-2];
+    [label setTextColor:[UIColor grayColor]];
+    label.numberOfLines=3;
+    [_scrollView addSubview:label];
 }
 
 - (void)sendDataArray:(NSArray *)array{
     NSInteger pageCount = [array count];
     [self setScrollViewPages:pageCount];
     _modelArray = [array copy];
-    for (NSInteger i=0; i<[array[0] count]; i++) {
+    for (NSInteger i=0; i<pageCount; i++) {
         NSDictionary *perDic = _modelArray[i];
-        UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(5+320*i, 10, 310, 100)];
-        [imageView setImageWithURL:[NSURL URLWithString:perDic[@"pic"]]];
-        //标题
-        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(10+320*i, 100, 300, 100)];
-        [label setText:perDic[@"alt"]];
-        [label setTextColor:[UIColor grayColor]];
-        label.numberOfLines=3;
-        [_scrollView addSubview:imageView];
-        [_scrollView addSubview:label];
-        [_pageControl setNumberOfPages:3];
+        [self addPerImageAt:i imageUrlName:perDic[@"pic"]];
+        [self addPerTextAt:i text:perDic[@"alt"]];
     }
 }
 
+- (void)setTitleArray:(NSArray *)titleArray andImageUrlArray:(NSArray *)imageArray{
+    NSInteger pageCount = titleArray.count;
+    if (pageCount != imageArray.count) {
+        return;
+    }
+    for (NSInteger i = 0; i<pageCount; i++) {
+        [self addPerImageAt:i imageUrlName:imageArray[i]];
+        [self addPerTextAt:i text:titleArray[i]];
+    }
+}
 #pragma mark -scrollView delegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     NSInteger pageindex = scrollView.contentOffset.x/320;

@@ -33,7 +33,7 @@
     self.urlString = @"http://api.sina.cn/sinago/list.json?channel=news_finance";
 }
 - (void)configNavBar{
-    [self setNavgationBarTitle:@"体育"];
+    [self setNavgationBarTitle:@"财经"];
     [self addSimpleNavigationBackButton];
 }
 

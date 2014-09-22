@@ -22,8 +22,9 @@
 }
 @end
 
+static NSString * const CarUrlString = @"http://api.sina.cn/sinago/list.json?channel=news_auto";
+
 @implementation CarViewController
-#define CarUrlString @"http://api.sina.cn/sinago/list.json?channel=news_auto"
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,25 +38,42 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    self.view.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"CarBg"]];
+    [self prepareData];
     
-    //数据源
-    _headDataArray=[[NSMutableArray alloc]init];
-    _listDataArray=[[NSMutableArray alloc]init];
-    _carView=[[CarView alloc]initWithFrame:CGRectMake(0, 0, 300, 130)];
+    [self prepareNavigationItem];
+    [self prepareTableView];
     
+    [self loadData];//数据请求
+}
+
+- (void)prepareTableView
+{
     //tableView
-    CGFloat height=[UIScreen mainScreen].bounds.size.height;
-    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(8, 3, 300, height) style:UITableViewStyleGrouped];
+    _tableView=[[UITableView alloc]initWithFrame:CGRectMake(8, 67, 300, [DeviceManager screenHeight]) style:UITableViewStyleGrouped];
     _tableView.backgroundColor=[UIColor colorWithWhite:0.9 alpha:0];
     _tableView.delegate=self;
     _tableView.dataSource=self;
     _tableView.tableHeaderView=_carView;
     [self.view addSubview:_tableView];
-    
-    [self loadData];//数据请求
 }
+
+- (void)prepareData
+{
+    //数据源
+    _headDataArray=[[NSMutableArray alloc]init];
+    _listDataArray=[[NSMutableArray alloc]init];
+    _carView=[[CarView alloc]initWithFrame:CGRectMake(0, 0, 300, 130)];
+}
+
+- (void)prepareNavigationItem
+{
+	// Do any additional setup after loading the view.
+    self.view.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageNamed:@"CarBg"]];
+    [self addSimpleNavigationBackButton];
+    [self setNavgationBarTitle:@"汽车"];
+    
+}
+
 #pragma mark -httpRequest
 - (void)loadData{
     [[ETRequestManager sharedManager]requestWithUrlString:CarUrlString requestType:HttpRequestTypeGET params:nil showWaitDialog:YES finised:^(id result) {

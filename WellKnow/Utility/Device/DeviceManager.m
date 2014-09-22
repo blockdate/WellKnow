@@ -34,7 +34,7 @@ DeviceManager *deviceManager;
 
 + (NSInteger)systemTextSize{
     ETSettingInfo *settingInfo = [ETSettingInfo sharedSettingInfo];
-    return settingInfo.textSize;
+    return settingInfo.textSize-2;
 }
 
 @end

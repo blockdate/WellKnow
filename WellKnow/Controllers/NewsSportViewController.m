@@ -115,7 +115,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableView *cell;
+    UITableViewCell *cell;
     if (indexPath.row == 0) {
         NewsStyleYmOnePicCell *oneCell = [_tableView dequeueReusableCellWithIdentifier:@"One"];
         if (oneCell == nil) {
