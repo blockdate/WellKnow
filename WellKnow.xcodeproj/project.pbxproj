@@ -39,8 +39,8 @@
 		BCEB26E919D0196D005A24E2 /* w_amw.png in Resources */ = {isa = PBXBuildFile; fileRef = BCEB26C919D0196D005A24E2 /* w_amw.png */; };
 		BCEB26EA19D0196D005A24E2 /* w_pm.png in Resources */ = {isa = PBXBuildFile; fileRef = BCEB26CA19D0196D005A24E2 /* w_pm.png */; };
 		BCEB26EB19D0196D005A24E2 /* w_pmw.png in Resources */ = {isa = PBXBuildFile; fileRef = BCEB26CB19D0196D005A24E2 /* w_pmw.png */; };
-		F9243B8D19CFEEA70002F66B /* NewsInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9243B8B19CFEEA70002F66B /* NewsInfoCell.m */; };
-		F9243B8E19CFEEA70002F66B /* NewsInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9243B8C19CFEEA70002F66B /* NewsInfoCell.xib */; };
+		BCEB26F919D01CEF005A24E2 /* NewsInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCEB26F719D01CEF005A24E2 /* NewsInfoCell.m */; };
+		BCEB26FA19D01CEF005A24E2 /* NewsInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCEB26F819D01CEF005A24E2 /* NewsInfoCell.xib */; };
 		F9243B9119CFF6CA0002F66B /* NSString+Font.m in Sources */ = {isa = PBXBuildFile; fileRef = F9243B9019CFF6CA0002F66B /* NSString+Font.m */; };
 		F9243B9419D001D60002F66B /* NewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F9243B9319D001D60002F66B /* NewsDetailViewController.m */; };
 		F9BE62B319CFD56A000CE464 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BE62B219CFD56A000CE464 /* Foundation.framework */; };
@@ -232,9 +232,9 @@
 		BCEB26C919D0196D005A24E2 /* w_amw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = w_amw.png; sourceTree = "<group>"; };
 		BCEB26CA19D0196D005A24E2 /* w_pm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = w_pm.png; sourceTree = "<group>"; };
 		BCEB26CB19D0196D005A24E2 /* w_pmw.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = w_pmw.png; sourceTree = "<group>"; };
-		F9243B8A19CFEEA70002F66B /* NewsInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsInfoCell.h; sourceTree = "<group>"; };
-		F9243B8B19CFEEA70002F66B /* NewsInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsInfoCell.m; sourceTree = "<group>"; };
-		F9243B8C19CFEEA70002F66B /* NewsInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsInfoCell.xib; sourceTree = "<group>"; };
+		BCEB26F619D01CEF005A24E2 /* NewsInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsInfoCell.h; sourceTree = "<group>"; };
+		BCEB26F719D01CEF005A24E2 /* NewsInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsInfoCell.m; sourceTree = "<group>"; };
+		BCEB26F819D01CEF005A24E2 /* NewsInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsInfoCell.xib; sourceTree = "<group>"; };
 		F9243B8F19CFF6CA0002F66B /* NSString+Font.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Font.h"; sourceTree = "<group>"; };
 		F9243B9019CFF6CA0002F66B /* NSString+Font.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Font.m"; sourceTree = "<group>"; };
 		F9243B9219D001D60002F66B /* NewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDetailViewController.h; sourceTree = "<group>"; };
@@ -1033,15 +1033,15 @@
 		F9BE63C819CFD5A0000CE464 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				BCEB26F619D01CEF005A24E2 /* NewsInfoCell.h */,
+				BCEB26F719D01CEF005A24E2 /* NewsInfoCell.m */,
+				BCEB26F819D01CEF005A24E2 /* NewsInfoCell.xib */,
 				F9BE63C919CFD5A0000CE464 /* SliderImageTableViewCell.h */,
 				F9BE63CA19CFD5A0000CE464 /* SliderImageTableViewCell.m */,
 				F9BE63CB19CFD5A0000CE464 /* SliderImageTableViewCell.xib */,
 				F9BE63CC19CFD5A0000CE464 /* TopIconCollectionCell.h */,
 				F9BE63CD19CFD5A0000CE464 /* TopIconCollectionCell.m */,
 				F9BE63CE19CFD5A0000CE464 /* TopIconCollectionCell.xib */,
-				F9243B8A19CFEEA70002F66B /* NewsInfoCell.h */,
-				F9243B8B19CFEEA70002F66B /* NewsInfoCell.m */,
-				F9243B8C19CFEEA70002F66B /* NewsInfoCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1157,7 +1157,6 @@
 				F9BE640419CFD5A0000CE464 /* video@2x.png in Resources */,
 				BCEB26E819D0196D005A24E2 /* w_am.png in Resources */,
 				F9BE641B19CFD5A0000CE464 /* MJRefresh.bundle in Resources */,
-				F9243B8E19CFEEA70002F66B /* NewsInfoCell.xib in Resources */,
 				BCEB26E619D0196D005A24E2 /* w8.png in Resources */,
 				BCEB26D119D0196D005A24E2 /* w15.png in Resources */,
 				F9BE63EA19CFD5A0000CE464 /* main_top_bg@2x.png in Resources */,
@@ -1170,6 +1169,7 @@
 				F9BE645219CFD5A0000CE464 /* SliderImageTableViewCell.xib in Resources */,
 				F9BE63E419CFD5A0000CE464 /* funny@2x.png in Resources */,
 				F9BE63E719CFD5A0000CE464 /* tech@2x.png in Resources */,
+				BCEB26FA19D01CEF005A24E2 /* NewsInfoCell.xib in Resources */,
 				BCEB26D219D0196D005A24E2 /* w16.png in Resources */,
 				F9BE63FB19CFD5A0000CE464 /* backgroundLightGray@2x.png in Resources */,
 				F9BE640119CFD5A0000CE464 /* Icon.png in Resources */,
@@ -1271,7 +1271,6 @@
 				F9BE644019CFD5A0000CE464 /* ETUserInfo.m in Sources */,
 				F9BE643419CFD5A0000CE464 /* NewsNormalModel.m in Sources */,
 				F9BE63D819CFD5A0000CE464 /* ComedyViewController.m in Sources */,
-				F9243B8D19CFEEA70002F66B /* NewsInfoCell.m in Sources */,
 				F9BE641819CFD5A0000CE464 /* UIWebView+AFNetworking.m in Sources */,
 				F9BE642D19CFD5A0000CE464 /* UIImage+GIF.m in Sources */,
 				F9BE642619CFD5A0000CE464 /* SDWebImageCompat.m in Sources */,
@@ -1292,6 +1291,7 @@
 				F9BE641019CFD5A0000CE464 /* AFURLSessionManager.m in Sources */,
 				F9BE641C19CFD5A0000CE464 /* MJRefreshBaseView.m in Sources */,
 				F9BE643E19CFD5A0000CE464 /* UIViewController+NavigationItemSettingTool.m in Sources */,
+				BCEB26F919D01CEF005A24E2 /* NewsInfoCell.m in Sources */,
 				F9BE644919CFD5A0000CE464 /* ComedyOtherCell.m in Sources */,
 				F9BE644319CFD5A0000CE464 /* ETRequestManager.m in Sources */,
 				F9BE644D19CFD5A0000CE464 /* NewsStyleYmOnePicCell.m in Sources */,

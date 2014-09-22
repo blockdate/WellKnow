@@ -12,6 +12,7 @@
 #import "TopIconCollectionCell.h"
 #import "SliderImageTableViewCell.h"
 #import "NewsNormalModel.h"
+#import "DeviceManager.h"
 #import "NewsInfoCell.h"
 #import "UIImageView+WebCache.h"
 #import "NewsDetailViewController.h"
