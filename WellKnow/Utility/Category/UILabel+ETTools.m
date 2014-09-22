@@ -21,14 +21,14 @@
 - (void)fixToSystemTitleSizeWithMaxWidth:(CGFloat)width{
     CGRect frame = self.frame;
     frame.size = [self currentSizeWithFont:[DeviceManager systemTextSize] MaxWidth:width];
-    self.font = [UIFont systemFontOfSize:[DeviceManager systemTextSize]];
+    self.font = [UIFont boldSystemFontOfSize:[DeviceManager systemTextSize]];
     self.frame = frame;
 }
 
 - (void)fixToSystemSubTitleSizeWithMaxWidth:(CGFloat)width{
     CGRect frame = self.frame;
-    frame.size = [self currentSizeWithFont:[DeviceManager systemTextSize]-2 MaxWidth:width];
-    self.font = [UIFont systemFontOfSize:[DeviceManager systemTextSize]-2];
+    frame.size = [self currentSizeWithFont:[DeviceManager systemTextSize]-4 MaxWidth:width];
+    self.font = [UIFont systemFontOfSize:[DeviceManager systemTextSize]-4];
     self.frame = frame;
 }
 

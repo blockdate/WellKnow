@@ -10,4 +10,6 @@
 
 @interface SliderImageTableViewCell : UITableViewCell
 
+- (void)setTitleArray:(NSArray *)titleArray andImageUrlArray:(NSArray *)imageArray;
+
 @end

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F9243B8D19CFEEA70002F66B /* NewsInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F9243B8B19CFEEA70002F66B /* NewsInfoCell.m */; };
+		F9243B8E19CFEEA70002F66B /* NewsInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F9243B8C19CFEEA70002F66B /* NewsInfoCell.xib */; };
+		F9243B9119CFF6CA0002F66B /* NSString+Font.m in Sources */ = {isa = PBXBuildFile; fileRef = F9243B9019CFF6CA0002F66B /* NSString+Font.m */; };
 		F9BE62B319CFD56A000CE464 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BE62B219CFD56A000CE464 /* Foundation.framework */; };
 		F9BE62B519CFD56A000CE464 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BE62B419CFD56A000CE464 /* CoreGraphics.framework */; };
 		F9BE62B719CFD56A000CE464 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9BE62B619CFD56A000CE464 /* UIKit.framework */; };
@@ -164,6 +167,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F9243B8A19CFEEA70002F66B /* NewsInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsInfoCell.h; sourceTree = "<group>"; };
+		F9243B8B19CFEEA70002F66B /* NewsInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsInfoCell.m; sourceTree = "<group>"; };
+		F9243B8C19CFEEA70002F66B /* NewsInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewsInfoCell.xib; sourceTree = "<group>"; };
+		F9243B8F19CFF6CA0002F66B /* NSString+Font.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Font.h"; sourceTree = "<group>"; };
+		F9243B9019CFF6CA0002F66B /* NSString+Font.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Font.m"; sourceTree = "<group>"; };
 		F9BE62AF19CFD56A000CE464 /* WellKnow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WellKnow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9BE62B219CFD56A000CE464 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F9BE62B419CFD56A000CE464 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -834,6 +842,8 @@
 				F9BE63A019CFD5A0000CE464 /* UILabel+ETTools.m */,
 				F9BE63A119CFD5A0000CE464 /* UIViewController+NavigationItemSettingTool.h */,
 				F9BE63A219CFD5A0000CE464 /* UIViewController+NavigationItemSettingTool.m */,
+				F9243B8F19CFF6CA0002F66B /* NSString+Font.h */,
+				F9243B9019CFF6CA0002F66B /* NSString+Font.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -872,6 +882,7 @@
 		F9BE63B019CFD5A0000CE464 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F9BE63C719CFD5A0000CE464 /* WL */,
 				F9BE63B119CFD5A0000CE464 /* CarCell.h */,
 				F9BE63B219CFD5A0000CE464 /* CarCell.m */,
 				F9BE63B319CFD5A0000CE464 /* CarCell.xib */,
@@ -894,7 +905,6 @@
 				F9BE63C419CFD5A0000CE464 /* PhotosListCell.xib */,
 				F9BE63C519CFD5A0000CE464 /* PhotosView.h */,
 				F9BE63C619CFD5A0000CE464 /* PhotosView.m */,
-				F9BE63C719CFD5A0000CE464 /* WL */,
 				F9BE63D219CFD5A0000CE464 /* YMImageAndLabelTool.h */,
 				F9BE63D319CFD5A0000CE464 /* YMImageAndLabelTool.m */,
 			);
@@ -919,6 +929,9 @@
 				F9BE63CC19CFD5A0000CE464 /* TopIconCollectionCell.h */,
 				F9BE63CD19CFD5A0000CE464 /* TopIconCollectionCell.m */,
 				F9BE63CE19CFD5A0000CE464 /* TopIconCollectionCell.xib */,
+				F9243B8A19CFEEA70002F66B /* NewsInfoCell.h */,
+				F9243B8B19CFEEA70002F66B /* NewsInfoCell.m */,
+				F9243B8C19CFEEA70002F66B /* NewsInfoCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1026,6 +1039,7 @@
 				F9BE63F719CFD5A0000CE464 /* nav_search_gray@2x.png in Resources */,
 				F9BE640419CFD5A0000CE464 /* video@2x.png in Resources */,
 				F9BE641B19CFD5A0000CE464 /* MJRefresh.bundle in Resources */,
+				F9243B8E19CFEEA70002F66B /* NewsInfoCell.xib in Resources */,
 				F9BE63EA19CFD5A0000CE464 /* main_top_bg@2x.png in Resources */,
 				F9BE63D519CFD5A0000CE464 /* categorys.plist in Resources */,
 				F9BE63E219CFD5A0000CE464 /* comedy@2x.png in Resources */,
@@ -1115,6 +1129,7 @@
 				F9BE644019CFD5A0000CE464 /* ETUserInfo.m in Sources */,
 				F9BE643419CFD5A0000CE464 /* NewsNormalModel.m in Sources */,
 				F9BE63D819CFD5A0000CE464 /* ComedyViewController.m in Sources */,
+				F9243B8D19CFEEA70002F66B /* NewsInfoCell.m in Sources */,
 				F9BE641819CFD5A0000CE464 /* UIWebView+AFNetworking.m in Sources */,
 				F9BE642D19CFD5A0000CE464 /* UIImage+GIF.m in Sources */,
 				F9BE642619CFD5A0000CE464 /* SDWebImageCompat.m in Sources */,
@@ -1142,6 +1157,7 @@
 				F9BE640F19CFD5A0000CE464 /* AFURLResponseSerialization.m in Sources */,
 				F9BE644B19CFD5A0000CE464 /* NewsStyleYmFourPicCell.m in Sources */,
 				F9BE63D619CFD5A0000CE464 /* BusinessViewController.m in Sources */,
+				F9243B9119CFF6CA0002F66B /* NSString+Font.m in Sources */,
 				F9BE63D919CFD5A0000CE464 /* ETNavgationViewController.m in Sources */,
 				F9BE641F19CFD5A0000CE464 /* MJRefreshHeaderView.m in Sources */,
 				F9BE640E19CFD5A0000CE464 /* AFURLRequestSerialization.m in Sources */,
@@ -1368,6 +1384,7 @@
 				F9BE62E319CFD56A000CE464 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F9BE62E419CFD56A000CE464 /* Build configuration list for PBXNativeTarget "WellKnowTests" */ = {
 			isa = XCConfigurationList;
@@ -1376,6 +1393,7 @@
 				F9BE62E619CFD56A000CE464 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

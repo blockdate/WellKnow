@@ -7,7 +7,10 @@
 //
 
 #import "SliderImageTableViewCell.h"
-@interface SliderImageTableViewCell()
+#import "ImageSliderView.h"
+@interface SliderImageTableViewCell(){
+    ImageSliderView *_sliderImageView;
+}
 
 @property (weak, nonatomic) IBOutlet UIImageView *backGroundView;
 
@@ -21,6 +24,10 @@
     [_backGroundView changeToRoundRect];
     [_backGroundView setBackgroundColor:[UIColor whiteColor]];
     self.backgroundColor = [UIColor clearColor];
+    
+    _sliderImageView = [[ImageSliderView alloc]initWithFrame:_backGroundView.frame];
+    
+    [self addSubview:_sliderImageView];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
@@ -28,6 +35,10 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)setTitleArray:(NSArray *)titleArray andImageUrlArray:(NSArray *)imageArray{
+    [_sliderImageView setTitleArray:titleArray andImageUrlArray:imageArray];
 }
 
 @end

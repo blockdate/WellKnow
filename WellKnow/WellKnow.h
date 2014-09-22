@@ -13,7 +13,8 @@
 #import "UIImageView+ETTools.h"
 #import "UILabel+ETTools.h"
 #import "UIViewController+NavigationItemSettingTool.h"
-
+#import "NSString+Font.h"
+#import "DeviceManager.h"
 #define Debug 0
 #if DEBUG
 #define ETLog(fmt, ...) NSLog(fmt, ##__VA_ARGS__)
