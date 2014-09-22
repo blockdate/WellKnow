@@ -16,6 +16,7 @@
 #import "NewsInfoCell.h"
 #import "UIImageView+WebCache.h"
 #import "NewsDetailViewController.h"
+#import "NSString+Font.h"
 @interface MainViewController ()<UITableViewDataSource, UITableViewDelegate>{
     NSMutableArray *_bottomTableDataArray;
     NSMutableArray *_middleDataArray;
