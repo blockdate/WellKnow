@@ -20,9 +20,6 @@
 @end
 
 @implementation TechnologyViewController
-#define firstUrlString @"http://api.sina.cn/sinago/list.json?channel=news_tech"
-#define secondUrlString @"http://api.sina.cn/sinago/list.json?channel=local_beijing"
-#define thirdUrlString @"http://api.sina.cn/sinago/list.json?channel=news_auto"
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,10 +35,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     self.view.backgroundColor=[UIColor whiteColor];
-    _dataArray=[[NSMutableArray alloc]init];
     [self addSimpleNavigationBackButton];
     [self setNavgationBarTitle:@"科技"];
+    
     [self createCate];//四个分类
+    _dataArray=[[NSMutableArray alloc]init];
     //tableView
     CGFloat height=[UIScreen mainScreen].bounds.size.height-150;
     _tableView=[[UITableView alloc]initWithFrame:CGRectMake(0, 150, 320, height) style:UITableViewStyleGrouped];
@@ -50,7 +48,7 @@
     [self.view addSubview:_tableView];
     
     //httpRequest
-    [[ETRequestManager sharedManager]requestWithUrlString:firstUrlString requestType:HttpRequestTypeGET params:nil showWaitDialog:YES finised:^(id result) {
+    [[ETRequestManager sharedManager]requestWithUrlString:@"http://api.sina.cn/sinago/list.json?channel=news_tech" requestType:HttpRequestTypeGET params:nil showWaitDialog:YES finised:^(id result) {
         NSDictionary *dic=[(NSDictionary *)result objectForKey:@"data"];
         NSArray *list=dic[@"list"];
         for (NSDictionary *perDic in list) {
@@ -66,7 +64,7 @@
 
 #pragma mark -四个分类 (24小时、昨天、前天、一周)
 - (void)createCate{
-    NSArray *labelArray=@[@"24小时",@"昨天",@"前天"];
+    NSArray *labelArray=@[@"最新",@"昨天",@"前天"];
     NSArray *buttonBgArray=@[@"hour.png",@"tomorrow.png",@"aftertomorrow.png"];
     UIImageView *bgImageView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 68, 320, 80)];
     bgImageView.image=[UIImage imageNamed:@"cateBg"];
@@ -95,7 +93,7 @@
 
 - (void)btnClicked:(UIButton *)btn{
     if (btn.tag==100) {
-        [[ETRequestManager sharedManager]requestWithUrlString:firstUrlString requestType:HttpRequestTypeGET params:nil showWaitDialog:YES finised:^(id result) {
+        [[ETRequestManager sharedManager]requestWithUrlString:@"http://api.sina.cn/sinago/list.json?channel=news_tech" requestType:HttpRequestTypeGET params:nil showWaitDialog:YES finised:^(id result) {
             NSDictionary *dic=[(NSDictionary *)result objectForKey:@"data"];
             NSArray *list=dic[@"list"];
             for (NSDictionary *perDic in list) {
@@ -108,7 +106,7 @@
         }];
     }else if (btn.tag==101){
         [_dataArray removeAllObjects];
-        [[ETRequestManager sharedManager]requestWithUrlString:secondUrlString requestType:HttpRequestTypeGET params:nil showWaitDialog:YES finised:^(id result) {
+        [[ETRequestManager sharedManager]requestWithUrlString:@"http://api.sina.cn/sinago/list.json?channel=local_beijing" requestType:HttpRequestTypeGET params:nil showWaitDialog:YES finised:^(id result) {
             NSDictionary *dic=[(NSDictionary *)result objectForKey:@"data"];
             NSArray *list=dic[@"list"];
             for (NSDictionary *perDic in list) {
@@ -121,7 +119,7 @@
         }];
     }else{
         [_dataArray removeAllObjects];
-        [[ETRequestManager sharedManager]requestWithUrlString:thirdUrlString requestType:HttpRequestTypeGET params:nil showWaitDialog:YES finised:^(id result) {
+        [[ETRequestManager sharedManager]requestWithUrlString:@"http://api.sina.cn/sinago/list.json?channel=news_auto" requestType:HttpRequestTypeGET params:nil showWaitDialog:YES finised:^(id result) {
             NSDictionary *dic=[(NSDictionary *)result objectForKey:@"data"];
             NSArray *list=dic[@"list"];
             for (NSDictionary *perDic in list) {
@@ -143,7 +141,7 @@
     if (section==0) {
         return 1;
     }
-    return _dataArray.count-1;
+    return _dataArray.count;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 80;
