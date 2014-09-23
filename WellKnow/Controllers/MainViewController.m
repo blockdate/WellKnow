@@ -11,6 +11,7 @@
 #import "ETRequestManager.h"
 #import "TopIconCollectionCell.h"
 #import "WeatherInfoCell.h"
+#import "WeatherModel.h"
 #import "NewsNormalModel.h"
 #import "DeviceManager.h"
 #import "NewsInfoCell.h"
