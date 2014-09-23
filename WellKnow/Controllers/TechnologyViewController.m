@@ -10,6 +10,7 @@
 #import "ETRequestManager.h"
 #import "NewsNormalModel.h"
 #import "ComedyCell.h"
+#import "ComedyOtherCell.h"
 #import "UIImageView+WebCache.h"
 
 @interface TechnologyViewController ()
@@ -48,6 +49,7 @@
     [self.view addSubview:_tableView];
     
     //httpRequest
+    [_dataArray removeAllObjects];
     [[ETRequestManager sharedManager]requestWithUrlString:@"http://api.sina.cn/sinago/list.json?channel=news_tech" requestType:HttpRequestTypeGET params:nil showWaitDialog:YES finised:^(id result) {
         NSDictionary *dic=[(NSDictionary *)result objectForKey:@"data"];
         NSArray *list=dic[@"list"];
@@ -62,7 +64,7 @@
 
 }
 
-#pragma mark -四个分类 (24小时、昨天、前天、一周)
+#pragma mark -三个分类 (24小时、昨天、前天、一周)
 - (void)createCate{
     NSArray *labelArray=@[@"最新",@"昨天",@"前天"];
     NSArray *buttonBgArray=@[@"hour.png",@"tomorrow.png",@"aftertomorrow.png"];
@@ -72,13 +74,13 @@
     for (NSInteger i=0; i<labelArray.count; i++) {
         //button
         UIButton *btn=[UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [btn setFrame:CGRectMake(30+32*i+80*i,20, 32, 32)];
+        [btn setFrame:CGRectMake(35+32*i+75*i,20, 32, 32)];
         [btn setBackgroundImage:[UIImage imageNamed:buttonBgArray[i]] forState:UIControlStateNormal];
         [btn setTag:100+i];
         [btn addTarget:self action:@selector(btnClicked:) forControlEvents:UIControlEventTouchUpInside];
         [bgImageView addSubview:btn];
         //label
-        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(27+40*i+76*i, 54, 50, 20)];
+        UILabel *label=[[UILabel alloc]initWithFrame:CGRectMake(35+40*i+70*i, 54, 50, 20)];
         [label setText:labelArray[i]];
         label.font=[UIFont systemFontOfSize:13];
         [label setTextColor:[UIColor colorWithWhite:0.4 alpha:1]];
@@ -91,8 +93,10 @@
     [self.view addSubview:bgImageView];
 }
 
+#pragma mark -btnClicked
 - (void)btnClicked:(UIButton *)btn{
     if (btn.tag==100) {
+        [_dataArray removeAllObjects];
         [[ETRequestManager sharedManager]requestWithUrlString:@"http://api.sina.cn/sinago/list.json?channel=news_tech" requestType:HttpRequestTypeGET params:nil showWaitDialog:YES finised:^(id result) {
             NSDictionary *dic=[(NSDictionary *)result objectForKey:@"data"];
             NSArray *list=dic[@"list"];
@@ -119,7 +123,7 @@
         }];
     }else{
         [_dataArray removeAllObjects];
-        [[ETRequestManager sharedManager]requestWithUrlString:@"http://api.sina.cn/sinago/list.json?channel=news_auto" requestType:HttpRequestTypeGET params:nil showWaitDialog:YES finised:^(id result) {
+        [[ETRequestManager sharedManager]requestWithUrlString:@"http://api.sina.cn/sinago/list.json?channel=news_toutiao" requestType:HttpRequestTypeGET params:nil showWaitDialog:YES finised:^(id result) {
             NSDictionary *dic=[(NSDictionary *)result objectForKey:@"data"];
             NSArray *list=dic[@"list"];
             for (NSDictionary *perDic in list) {
@@ -155,12 +159,28 @@
 #pragma mark -tableView dataSource
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell;
-    if (indexPath.section==0) {
+    if (indexPath.section==0) { //三张图片的cell
+        NewsNormalModel *model=[[NewsNormalModel alloc]init];
+        if ([model.category isEqualToString:@"hdpic"]){
+            ComedyOtherCell *comedyCell=[tableView dequeueReusableCellWithIdentifier:@"ComedyOtherCell"];
+            if (comedyCell==nil) {
+                comedyCell=[[[NSBundle mainBundle]loadNibNamed:@"ComedyOtherCell" owner:self options:nil]lastObject];
+            }
+            [comedyCell.introLabel setText:model.long_title];
+            [comedyCell.commentLabel setText:[NSString stringWithFormat:@"%@",[model.comment_count_info objectForKey:@"qreply"]]];
+            [comedyCell.totalLabel setText:[NSString stringWithFormat:@"%@",[model.comment_count_info objectForKey:@"total"]]];
+            NSArray *list=model.pics[@"list"];
+            [comedyCell.picOneImageView setImageWithURL:[NSURL URLWithString:[list[0] objectForKey:@"pic"]]];
+            [comedyCell.picTwoImageView setImageWithURL:[NSURL URLWithString:[list[1] objectForKey:@"pic"]]];
+            [comedyCell.picThreeImageView setImageWithURL:[NSURL URLWithString:[list[2] objectForKey:@"pic"]]];
+            cell=comedyCell;
+        }
+    }else{
         ComedyCell *tech=[tableView dequeueReusableCellWithIdentifier:@"ComedyCell"];
         if (tech==nil) {
             tech=[[[NSBundle mainBundle]loadNibNamed:@"ComedyCell" owner:self options:nil]lastObject];
         }
-        NewsNormalModel *model=_dataArray.lastObject;
+        NewsNormalModel *model=_dataArray[indexPath.row];
         [tech.picImageView setImageWithURL:[NSURL URLWithString:model.pic]];
         [tech.titleLabel setText:model.title];
         [tech.introLabel setText:model.intro];
@@ -178,30 +198,6 @@
             [tech.cateGoryLabel setText:@" "];
         }
         cell=tech;
-    }else{
-        ComedyCell *tech1=[tableView dequeueReusableCellWithIdentifier:@"ComedyCell"];
-        if (tech1==nil) {
-            tech1=[[[NSBundle mainBundle]loadNibNamed:@"ComedyCell" owner:self options:nil]lastObject];
-        }
-        NewsNormalModel *model=_dataArray[indexPath.row];
-        [tech1.picImageView setImageWithURL:[NSURL URLWithString:model.pic]];
-        [tech1.titleLabel setText:model.title];
-        [tech1.introLabel setText:model.intro];
-        [tech1.commentLabel setText:[NSString stringWithFormat:@"%@",[model.comment_count_info objectForKey:@"total"]]];
-        if ([model.category isEqualToString:@"video"]) {
-            [tech1.cateGroyImageView setImage:[UIImage imageNamed:@"video"]];
-            [tech1.cateGoryLabel setText:@"视频"];
-            [tech1.cateGoryLabel setTextColor:[UIColor colorWithRed:35.0/255 green:120.0/255 blue:250.0/255 alpha:1]];
-        }else if ([model.category isEqualToString:@"subject"]){
-            [tech1.cateGroyImageView setImage:[UIImage imageNamed:@"subject"]];
-            [tech1.cateGoryLabel setText:@"专题"];
-            [tech1.cateGoryLabel setTextColor:[UIColor redColor]];
-        }else{
-            [tech1.cateGroyImageView setImage:[UIImage imageNamed:@" "]];
-            [tech1.cateGoryLabel setText:@" "];
-        }
-
-        cell=tech1;
     }
     return cell;
 }
