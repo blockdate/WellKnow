@@ -68,6 +68,7 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView{
     [SVProgressHUD dismissWithSuccess:@"加载成功" afterDelay:0.5];
+
 }
 
 - (void)didReceiveMemoryWarning
